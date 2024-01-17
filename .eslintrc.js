@@ -25,6 +25,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react'],
+  ignorePatterns: ['**/*.min.js', 'build/**'],
   rules: {
     'no-console': 'warn',
     curly: ['error', 'all'],
