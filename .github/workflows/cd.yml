@@ -28,9 +28,19 @@ jobs:
         run: |
           git config --local user.email "lesjok@inbox.ru"
           git config --local user.name "Olesya Dorofeeva"
-          git checkout gh-pages
           
-          git add --all ./build
+          git checkout -b gh-pages-temp
+          
+          cp -r build/* .
+          
+          git add --all
+          
           git commit -m "GitHub Pages Deployment"
-    
+          
+          git checkout gh-pages
+          git pull origin gh-pages
+          git rm -r .
+          git pull origin gh-pages-temp
+          git commit -m "Replace gh-pages content with latest build"
+          
           git push origin gh-pages --force
