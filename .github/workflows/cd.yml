@@ -29,7 +29,10 @@ jobs:
           git config --local user.email "lesjok@inbox.ru"
           git config --local user.name "Olesya Dorofeeva"
           
-          # Создаем временную ветку
+        # Удаляем существующую временную ветку, если она существует
+          git branch -D gh-pages-temp
+          
+          # Создаем новую временную ветку
           git checkout -b gh-pages-temp
           
           # Копируем содержимое build в корень
@@ -43,9 +46,15 @@ jobs:
           
           # Пушим изменения во временную ветку с использованием токена GitHub Actions
           git push --set-upstream origin gh-pages-temp -o "oauth2=${{ secrets.GITHUB_TOKEN }}" --force
-
-          # Создаем ветку gh-pages, если ее нет
-          git show-ref --verify --quiet refs/heads/gh-pages || git checkout --orphan gh-pages
+          
+          # Проверяем существование ветки gh-pages
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+          # Если ветка gh-pages существует, переключаемся на нее
+          git checkout gh-pages
+          else
+          # Иначе, создаем новую ветку gh-pages
+          git checkout --orphan gh-pages
+          fi
           
           # Заменяем содержимое ветки gh-pages на новый коммит
           git fetch --all
