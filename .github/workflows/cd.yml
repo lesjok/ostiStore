@@ -29,18 +29,28 @@ jobs:
           git config --local user.email "lesjok@inbox.ru"
           git config --local user.name "Olesya Dorofeeva"
           
+          # Создаем временную ветку
           git checkout -b gh-pages-temp
           
+          # Копируем содержимое build в корень
           cp -r build/* .
           
+          # Добавляем все изменения
           git add --all
           
+          # Коммитим изменения
           git commit -m "GitHub Pages Deployment"
           
-          git push --set-upstream origin gh-pages-temp --force
+          # Пушим изменения во временную ветку с использованием токена GitHub Actions
+          git push --set-upstream origin gh-pages-temp -o "oauth2=${{ secrets.GITHUB_TOKEN }}" --force
 
-          git checkout gh-pages
-          git pull origin gh-pages-temp
+          # Создаем ветку gh-pages, если ее нет
+          git show-ref --verify --quiet refs/heads/gh-pages || git checkout --orphan gh-pages
+          
+          # Заменяем содержимое ветки gh-pages на новый коммит
+          git fetch --all
+          git reset --hard origin/gh-pages-temp
           git commit -m "Replace gh-pages content with latest build"
           
-          git push --set-upstream origin gh-pages --force
+          # Пушим изменения в gh-pages с использованием токена GitHub Actions
+          git push --set-upstream origin gh-pages -o "oauth2=${{ secrets.GITHUB_TOKEN }}" --force
