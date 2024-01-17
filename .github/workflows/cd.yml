@@ -34,13 +34,13 @@ jobs:
           cp -r build/* .
           
           git add --all
-          
+
           git commit -m "GitHub Pages Deployment"
           
-          git push --set-upstream origin gh-pages-temp --force
+          git push --set-upstream origin gh-pages-temp -o "oauth2=${{ secrets.GITHUB_TOKEN }}" --force
 
           git checkout gh-pages
           git pull origin gh-pages-temp
           git commit -m "Replace gh-pages content with latest build"
           
-          git push --set-upstream origin gh-pages --force
+          git push --set-upstream origin gh-pages -o "oauth2=${{ secrets.GITHUB_TOKEN }}" --force
