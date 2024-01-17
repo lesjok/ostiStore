@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          git config --local user.email "lesjok@inbox.com"
+          git config --local user.email "lesjok@inbox.ru"
           git config --local user.name "Olesya Dorofeeva"
           git checkout gh-pages
           
