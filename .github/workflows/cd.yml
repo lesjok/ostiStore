@@ -28,20 +28,20 @@ jobs:
         run: |
           git config --local user.email "lesjok@inbox.ru"
           git config --local user.name "Olesya Dorofeeva"
-
+          
           git checkout -b gh-pages-temp
-
+          
           cp -r build/* .
-
+          
           git add --all
-
+          
           git commit -m "GitHub Pages Deployment"
-
+          
           git push --set-upstream origin gh-pages-temp -o "oauth2=${{ secrets.GITHUB_TOKEN }}" --force
-
+          
           git fetch origin
           git checkout gh-pages
           git reset --hard origin/gh-pages-temp
           git clean -df
-
+          
           git push origin gh-pages --force

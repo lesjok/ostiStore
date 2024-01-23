@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ostiStore/static/css/main.e6c13ad2.css",
+    "main.js": "/ostiStore/static/js/main.98d72469.js",
+    "static/js/787.4d95a167.chunk.js": "/ostiStore/static/js/787.4d95a167.chunk.js",
+    "index.html": "/ostiStore/index.html",
+    "main.e6c13ad2.css.map": "/ostiStore/static/css/main.e6c13ad2.css.map",
+    "main.98d72469.js.map": "/ostiStore/static/js/main.98d72469.js.map",
+    "787.4d95a167.chunk.js.map": "/ostiStore/static/js/787.4d95a167.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.98d72469.js"
+  ]
+}
