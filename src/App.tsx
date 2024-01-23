@@ -1,8 +1,3 @@
-import { Route, Routes } from 'react-router-dom'
-import { Suspense } from 'react'
-import React from 'react'
-import './App.css'
-
 import {
   MainPage,
   FavouritePage,
@@ -13,6 +8,10 @@ import {
 } from './router/AppRouter'
 import MyErrorBoundary from './components/MyErrorBoundary/MyErrorBoundary'
 import { ProtectedRoute } from './router/ProtectedRoute'
+import { Route, Routes } from 'react-router-dom'
+import { Suspense } from 'react'
+import React from 'react'
+import './App.css'
 
 export function App() {
   return (
@@ -25,7 +24,11 @@ export function App() {
             <Route path="/product/:id" element={<ProductPage />} />
             <Route
               path="/favourites"
-              element={<ProtectedRoute element={<FavouritePage />} />}
+              element={
+                <ProtectedRoute>
+                  <FavouritePage />
+                </ProtectedRoute>
+              }
             />
             <Route index element={<MainPage />} />
           </Route>

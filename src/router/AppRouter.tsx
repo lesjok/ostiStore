@@ -6,10 +6,6 @@ export const FavouritePage = React.lazy(
   () => import('../pages/FavouritePage/FavouritePage'),
 )
 
-export const HistoryPage = React.lazy(
-  () => import('../pages/HistoryPage/HistoryPage'),
-)
-
 export const LayoutPage = React.lazy(
   () => import('../pages/LayoutPage/LayoutPage'),
 )
