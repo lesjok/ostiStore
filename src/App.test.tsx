@@ -4,6 +4,6 @@ import React from 'react'
 
 test('renders learn react link', () => {
   render(<App />)
-  const linkElement = screen.getByRole('app')
+  const linkElement = screen.getByText('Loading...')
   expect(linkElement).toBeInTheDocument()
 })
