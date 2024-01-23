@@ -1,0 +1,40 @@
+.header {
+  background-color: #fff;
+  position: sticky;
+  padding: 15px;
+  top: 0;
+  left: 0;
+  box-shadow: 7px -5px 17px -2px;
+}
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+.nav__logo {
+  height: 70px;
+}
+.nav__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.nav__btn {
+  border-radius: 10px;
+  width: 55px;
+  height: 30px;
+  border: 2px solid #000;
+  background-color: #dfa4ff;
+  margin-left: 10px;
+  text-decoration: none;
+  margin-right: 20px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav__link {
+  text-decoration: none;
+  color: #000;
+  margin-right: 10px;
+  font-size: 16px;
+}
