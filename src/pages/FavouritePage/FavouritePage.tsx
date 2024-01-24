@@ -1,4 +1,4 @@
-import { useLikedProducts } from '../../firebase/Firebase'
+import { useLikedProducts } from '../../firebase/FirebaseFavourites'
 import CardItem from '../../components/CardItem/CardItem'
 import '../MainPage/MainPage.css'
 import React from 'react'

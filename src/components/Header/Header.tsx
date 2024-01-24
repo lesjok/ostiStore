@@ -1,4 +1,4 @@
-import { useAuthentication } from '../../firebase/Firebase'
+import { useAuthentication } from '../../firebase/FirebaseAuth'
 import logo from '../../assets/images/grow.svg'
 import { Link } from 'react-router-dom'
 import Search from '../Search/Search'

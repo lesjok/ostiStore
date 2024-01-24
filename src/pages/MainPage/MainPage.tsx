@@ -3,7 +3,7 @@ import { useGetProductsQuery } from '../../redux/api'
 import React from 'react'
 import './MainPage.css'
 
-const MainPage: React.FC = () => {
+const MainPage = () => {
   const { data: products } = useGetProductsQuery()
 
   return (

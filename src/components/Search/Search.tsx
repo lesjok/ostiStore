@@ -5,14 +5,14 @@ import { IProduct } from '../../types/type'
 import { Link } from 'react-router-dom'
 import './Search.css'
 
-const Search: React.FC = () => {
+const Search = () => {
   const [products, setProducts] = useState<IProduct[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const { data: productsFromQuery = [] } = useSearchProductsQuery(searchTerm)
 
   const debouncedSearch = debounce((term: string) => {
     setSearchTerm(term)
-  }, 300)
+  }, 100)
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {

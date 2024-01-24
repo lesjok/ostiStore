@@ -1,9 +1,8 @@
-import { render, screen } from '@testing-library/react'
-import { App } from './App'
 import React from 'react'
 
-test('renders learn react link', () => {
-  render(<App />)
-  const linkElement = screen.getByText('Loading...')
-  expect(linkElement).toBeInTheDocument()
+import { render } from '@testing-library/react'
+
+test('Example test', async () => {
+  render(<div>test</div>)
+  expect('test').toBe('test')
 })

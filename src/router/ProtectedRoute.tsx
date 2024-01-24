@@ -1,4 +1,4 @@
-import { useAuthentication } from '../firebase/Firebase'
+import { useAuthentication } from '../firebase/FirebaseAuth'
 import { Navigate } from 'react-router-dom'
 import React from 'react'
 

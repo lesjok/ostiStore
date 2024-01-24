@@ -25,11 +25,9 @@ export const api = createApi({
         _: FetchBaseQueryMeta | undefined,
         arg: string,
       ) => {
-        return [
-          ...response.filter((product) =>
-            product.title.toLowerCase().includes(arg.toLowerCase()),
-          ),
-        ]
+        return response.filter((product) =>
+          product.title.toLowerCase().includes(arg.toLowerCase())
+        );
       },
     }),
   }),

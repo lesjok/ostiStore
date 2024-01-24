@@ -35,6 +35,13 @@ module.exports = {
       'error',
       { allowShortCircuit: true, allowTernary: true },
     ],
+    'react/self-closing-comp': [
+      'error',
+      {
+        component: true,
+        html: false,
+      },
+    ],
   },
   settings: {
     react: {

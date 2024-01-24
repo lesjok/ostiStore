@@ -1,4 +1,5 @@
-import { useAuthentication, useLiked } from '../../firebase/Firebase'
+import { useAuthentication } from '../../firebase/FirebaseAuth'
+import { useLiked } from '../../firebase/FirebaseFavourites'
 import { IProduct } from '../../types/type'
 import { Link } from 'react-router-dom'
 import React from 'react'
@@ -21,9 +22,7 @@ export default function CardItem({
 }: CardsItems) {
   const { isLiked, toggleIsLiked } = useLiked(id)
   const { isLogin } = useAuthentication()
-  const cardLikeButtonClassName = isLiked
-    ? 'card__like card__like-active'
-    : 'card__like'
+  const cardLikeButtonClassName = isLiked ? 'card__like-active' : ''
 
   const likeHandler = () => {
     toggleIsLiked(product)
@@ -41,7 +40,7 @@ export default function CardItem({
           <button
             onClick={likeHandler}
             type="submit"
-            className={cardLikeButtonClassName}
+            className={`card__like ${cardLikeButtonClassName}`}
           ></button>
         )}
       </div>

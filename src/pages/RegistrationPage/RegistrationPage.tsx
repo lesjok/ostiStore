@@ -1,9 +1,9 @@
-import { useRegister } from '../../firebase/Firebase'
+import { useRegister } from '../../firebase/FirebaseAuth'
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import './RegistrationPage.css'
 
-const RegistrationPage: React.FC = () => {
+const RegistrationPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState('')

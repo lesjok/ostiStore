@@ -1,4 +1,5 @@
-import { useAuthentication, useLiked } from '../../firebase/Firebase'
+import { useAuthentication } from '../../firebase/FirebaseAuth'
+import { useLiked } from '../../firebase/FirebaseFavourites'
 import { useGetDetailProductQuery } from '../../redux/api'
 import { useParams } from 'react-router-dom'
 import './ProductPage.css'
@@ -9,9 +10,7 @@ const ProductPage = () => {
   const { data: product } = useGetDetailProductQuery(Number(id))
   const { isLogin } = useAuthentication()
   const { isLiked, toggleIsLiked } = useLiked(Number(id))
-  const cardLikeButtonClassName = isLiked
-    ? 'card__like card__like-active'
-    : 'card__like'
+  const cardLikeButtonClassName = isLiked ? 'card__like-active' : ''
 
   if (!product) {
     return null
@@ -31,8 +30,8 @@ const ProductPage = () => {
           <button
             type="submit"
             onClick={likeHandler}
-            className={cardLikeButtonClassName}
-          ></button>
+            className={`card__like ${cardLikeButtonClassName}`}
+          />
         )}
       </div>
     </section>
