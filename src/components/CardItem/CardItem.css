@@ -1,0 +1,46 @@
+.card {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card__title {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+.card__img {
+  align-self: center;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+.card__link {
+  text-decoration: none;
+  color: #000;
+}
+.card__description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card__price {
+  margin: 0;
+}
+.card__like {
+  background-image: url('../../assets/images/heart.svg');
+  background-repeat: no-repeat;
+  cursor: pointer;
+  min-width: 22px;
+  height: 19px;
+  background-color: transparent;
+  border: none;
+  transition: 0.1s;
+  margin: 0;
+}
+.card__like:hover {
+  opacity: 0.6;
+}
+.card__like.card__like-active {
+  background-image: url('../../assets/images/heart-active.svg');
+  background-repeat: no-repeat;
+}

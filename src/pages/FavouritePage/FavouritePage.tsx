@@ -1,17 +1,16 @@
+import { useLikedProducts } from '../../firebase/FirebaseFavourites'
 import CardItem from '../../components/CardItem/CardItem'
-import { useGetProductsQuery } from '../../redux/api'
+import '../MainPage/MainPage.css'
 import React from 'react'
-import './MainPage.css'
 
-const MainPage = () => {
-  const { data: products } = useGetProductsQuery()
+const FavouritePage = () => {
+  const { likedProducts } = useLikedProducts()
 
   return (
     <ul className="cards">
-      {products?.map((product) => (
+      {likedProducts?.map((product) => (
         <li key={product.id} className="cards__item">
           <CardItem
-            key={product.id}
             id={product.id}
             title={product.title}
             price={product.price}
@@ -23,4 +22,5 @@ const MainPage = () => {
     </ul>
   )
 }
-export default MainPage
+
+export default FavouritePage
