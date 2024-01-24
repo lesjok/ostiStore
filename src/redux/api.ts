@@ -26,8 +26,8 @@ export const api = createApi({
         arg: string,
       ) => {
         return response.filter((product) =>
-          product.title.toLowerCase().includes(arg.toLowerCase())
-        );
+          product.title.toLowerCase().includes(arg.toLowerCase()),
+        )
       },
     }),
   }),

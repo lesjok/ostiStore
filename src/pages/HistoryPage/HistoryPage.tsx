@@ -6,7 +6,7 @@ export default function HistoryPage() {
   return (
     <header className="">
       <nav className="">
-        <Link to="/" className=""></Link>
+        <Link to="/" className="" />
       </nav>
     </header>
   )
