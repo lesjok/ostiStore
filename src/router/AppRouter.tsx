@@ -21,3 +21,11 @@ export const RegistrationPage = React.lazy(
 export const ProductPage = React.lazy(
   () => import('../pages/ProductPage/ProductPage'),
 )
+
+export const HistoryPage = React.lazy(
+  () => import('../pages/HistoryPage/HistoryPage'),
+)
+
+export const SearchPage = React.lazy(
+  () => import('../pages/SearchPage/SearchPage'),
+)

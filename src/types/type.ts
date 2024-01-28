@@ -16,3 +16,9 @@ export interface IFormValues {
   email: string
   password: string
 }
+
+export interface IHistory {
+  id: string
+  url: string
+  query: string
+}
