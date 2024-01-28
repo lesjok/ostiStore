@@ -1,20 +1,17 @@
-function debounce<T>(
-  // eslint-disable-next-line
-  func: (...args: any[]) => T,
-  wait: number,
-): (...args: Parameters<typeof func>) => Promise<T> {
-  let timeoutId: NodeJS.Timeout
+import { useEffect, useState } from 'react'
 
-  return function (...args: Parameters<typeof func>): Promise<T> {
-    return new Promise((resolve) => {
-      clearTimeout(timeoutId)
+export function debounce<T>(value: T, delay?: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value)
 
-      timeoutId = setTimeout(() => {
-        const result = func(...args)
-        resolve(result)
-      }, wait)
-    })
-  }
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay || 500)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [value, delay])
+
+  return debouncedValue
 }
 
 export default debounce

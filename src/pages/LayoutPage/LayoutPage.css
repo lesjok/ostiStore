@@ -5,4 +5,5 @@
 }
 .main {
   background-color: #dfa4ff;
+  flex: 1 1 auto;
 }

@@ -3,12 +3,12 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBPSiUvALlJFUDXjs6Y8NCKvhTnXvdg1uA',
-  authDomain: 'osti-shop.firebaseapp.com',
-  projectId: 'osti-shop',
-  storageBucket: 'osti-shop.appspot.com',
-  messagingSenderId: '634821399222',
-  appId: '1:634821399222:web:ad749a7364aaca3eb54c17',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 }
 
 const app = initializeApp(firebaseConfig)

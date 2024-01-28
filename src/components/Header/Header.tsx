@@ -1,6 +1,6 @@
 import { useAuthentication } from '../../firebase/FirebaseAuth'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/images/grow.svg'
-import { Link } from 'react-router-dom'
 import Search from '../Search/Search'
 import React from 'react'
 import './Header.css'
@@ -15,15 +15,30 @@ export default function Header() {
   return (
     <header className="header">
       <nav className="header__nav">
-        <Link to="/">
+        <Link to="/" className="header__link">
           <img src={logo} alt="logo" title="Fake Shop" className="nav__logo" />
+          <h2 className="nav__head">Osti Shop</h2>
         </Link>
-        <h2 className="nav__head">Osti Shop</h2>
         <div className="nav__right">
           {isLogin && (
-            <Link to="/favourites" className="nav__link">
-              favourites
-            </Link>
+            <>
+              <NavLink
+                to="/history"
+                className={({ isActive }) =>
+                  isActive ? 'nav__link nav__link_active' : 'nav__link'
+                }
+              >
+                history
+              </NavLink>
+              <NavLink
+                to="/favourites"
+                className={({ isActive }) =>
+                  isActive ? 'nav__link nav__link_active' : 'nav__link'
+                }
+              >
+                favourites
+              </NavLink>
+            </>
           )}
           <Search />
           {isLogin ? (

@@ -1,0 +1,33 @@
+.history {
+  padding: 20px;
+}
+.history__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.history__item {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+.history__item.exiting {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+.history__link {
+  text-decoration: none;
+  font-weight: 700;
+  color: #000;
+}
+.history__del {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
