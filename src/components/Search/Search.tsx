@@ -1,14 +1,16 @@
+import React, { useState, KeyboardEvent, useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { saveHistory } from '../../firebase/FirebaseHistory'
 import { useSearchProductsQuery } from '../../redux/api'
-import React, { useState, KeyboardEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
+import type { IProduct } from '../../types/type'
 import debounce from '../../hooks/debounce'
-import { IProduct } from '../../types/type'
 import { Link } from 'react-router-dom'
 import './Search.css'
 
 const Search = () => {
   const [products, setProducts] = useState<IProduct[]>([])
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get('query')
   const [searchTerm, setSearchTerm] = useState('')
   const debouncedValue = debounce<string>(searchTerm, 700)
   const [showSuggestions, setShowSuggestions] = useState(true)
@@ -28,8 +30,12 @@ const Search = () => {
     const searchUrl = `/search?query=${searchTerm}`
     navigate(searchUrl)
     saveHistory(searchTerm)
-    setSearchTerm('')
   }
+
+  useEffect(() => {
+    setSearchTerm(query || '')
+    setShowSuggestions(false)
+  }, [query])
 
   const handleBlur = () => {
     setTimeout(() => {
@@ -47,9 +53,9 @@ const Search = () => {
         className="search__input"
         onBlur={handleBlur}
       />
-      <button onClick={handleSearch} className="search__btn">
+      <a onClick={handleSearch} className="nav__btn">
         Search
-      </button>
+      </a>
       {searchTerm && showSuggestions && (
         <ul className="search__suggestions">
           {products.map((product, index) => (

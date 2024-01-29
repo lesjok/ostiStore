@@ -31,3 +31,11 @@
   border: none;
   background-color: transparent;
 }
+.not-found {
+  display: flex;
+  justify-content: center;
+}
+.not-found__message {
+  margin-top: 20px;
+  font-size: 18px;
+}

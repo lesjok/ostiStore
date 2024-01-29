@@ -48,7 +48,7 @@ const RegistrationPage = () => {
           className="form__btn_register"
           onClick={checkValidation}
         >
-          register
+          Register
         </button>
         <div className="form__login">
           <div>Already have an account?</div>

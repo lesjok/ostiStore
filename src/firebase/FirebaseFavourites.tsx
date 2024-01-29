@@ -9,8 +9,8 @@ import {
 import { useAppSelector } from '../redux/dispatch'
 
 import { useNavigate } from 'react-router-dom'
+import type { IProduct } from '../types/type'
 import { useEffect, useState } from 'react'
-import { IProduct } from '../types/type'
 import { db } from './firebase.config'
 
 const useLiked = (productId: number | null) => {
