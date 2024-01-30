@@ -8,8 +8,8 @@ import {
   where,
 } from 'firebase/firestore'
 import { Dispatch, SetStateAction, useEffect } from 'react'
+import type { IUser, IHistory } from '../types/type'
 import { onAuthStateChanged } from 'firebase/auth'
-import { IUser, IHistory } from '../types/type'
 import { auth, db } from './firebase.config'
 
 export const useAuthState = (

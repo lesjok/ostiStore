@@ -1,7 +1,8 @@
 import { useAuthentication } from '../../firebase/FirebaseAuth'
 import { useLiked } from '../../firebase/FirebaseFavourites'
-import { IProduct } from '../../types/type'
+import type { IProduct } from '../../types/type'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import React from 'react'
 import './CardItem.css'
 
@@ -46,4 +47,19 @@ export default function CardItem({
       </div>
     </div>
   )
+}
+
+CardItem.propTypes = {
+  id: PropTypes.number,
+  price: PropTypes.number,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  product: PropTypes.shape({
+    category: PropTypes.string,
+    description: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
 }

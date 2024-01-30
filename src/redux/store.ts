@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { authMiddleware } from '../middlewares/authMiddleware'
 import { user } from './slice'
 import { api } from './api'
 
@@ -10,7 +11,9 @@ export const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware()
+      .concat(api.middleware)
+      .concat(authMiddleware.middleware),
   devTools: true,
 })
 

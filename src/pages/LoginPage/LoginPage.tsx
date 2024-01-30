@@ -49,7 +49,7 @@ const LoginPage = () => {
           className="form__btn_login"
           onClick={checkValidation}
         >
-          log in
+          Log in
         </button>
         <div className="form__registration">
           <div>Don&apos;t have an account?</div>

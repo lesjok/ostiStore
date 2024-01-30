@@ -2,10 +2,15 @@ import { useAuthentication } from '../../firebase/FirebaseAuth'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/images/grow.svg'
 import Search from '../Search/Search'
+import PropTypes from 'prop-types'
 import React from 'react'
 import './Header.css'
 
-export default function Header() {
+interface Props {
+  toggleDarkMode: () => void
+}
+
+const Header = ({ toggleDarkMode }: Props) => {
   const { isLogin, logout } = useAuthentication()
 
   const handleLogout = () => {
@@ -40,18 +45,37 @@ export default function Header() {
               </NavLink>
             </>
           )}
+          <label className="nav__checkbox checkbox">
+            <input type="checkbox" onChange={toggleDarkMode} />
+            <span
+              className="checkbox__switch"
+              data-label-on="On"
+              data-label-off="Off"
+            ></span>
+          </label>
           <Search />
           {isLogin ? (
             <Link to="/" className="nav__btn" onClick={handleLogout}>
-              log out
+              Log out
             </Link>
           ) : (
-            <Link to="/login" className="nav__btn">
-              log in
-            </Link>
+            <>
+              <Link to="/login" className="nav__btn">
+                Login
+              </Link>
+              <Link to="/registration" className="nav__btn">
+                Register
+              </Link>
+            </>
           )}
         </div>
       </nav>
     </header>
   )
 }
+
+Header.propTypes = {
+  toggleDarkMode: PropTypes.func.isRequired,
+}
+
+export default Header

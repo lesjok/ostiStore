@@ -1,6 +1,6 @@
 import { auth } from '../firebase/firebase.config'
 import { createSlice } from '@reduxjs/toolkit'
-import { IUser } from '../types/type'
+import type { IUser } from '../types/type'
 
 type InitialState = {
   authorize: boolean

@@ -7,3 +7,10 @@
   background-color: #dfa4ff;
   flex: 1 1 auto;
 }
+.main.dark {
+  background: radial-gradient(
+    circle,
+    rgba(223, 164, 255, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}

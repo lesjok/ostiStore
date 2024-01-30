@@ -7,9 +7,9 @@ import {
 import { useAppDispatch, useAppSelector } from '../redux/dispatch'
 import { doc, onSnapshot, setDoc } from 'firebase/firestore'
 import { logoutUser, setCurrentUser } from '../redux/slice'
+import type { IFormValues } from '../types/type'
 import { useNavigate } from 'react-router-dom'
 import { auth, db } from './firebase.config'
-import { IFormValues } from '../types/type'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 

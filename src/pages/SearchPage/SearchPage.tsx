@@ -1,5 +1,6 @@
+import { useGetProductsQuery, useSearchProductsQuery } from '../../redux/api'
 import CardItem from '../../components/CardItem/CardItem'
-import { useSearchProductsQuery } from '../../redux/api'
+import Spinner from '../../components/Spinner/Spinner'
 import { useLocation } from 'react-router-dom'
 import './SearchPage.css'
 import React from 'react'
@@ -8,8 +9,11 @@ const SearchPage = () => {
   const { search: searchParams } = useLocation()
   const query = new URLSearchParams(searchParams).get('query') || ''
   const { data: products = [] } = useSearchProductsQuery(query)
+  const { isLoading } = useGetProductsQuery()
 
-  return products.length >= 1 ? (
+  return isLoading ? (
+    <Spinner />
+  ) : products.length >= 1 ? (
     <ul className="cards">
       {products?.map((product) => (
         <li key={product.id} className="cards__item">

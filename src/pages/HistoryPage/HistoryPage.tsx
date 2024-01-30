@@ -1,5 +1,7 @@
 import { deleteHistory, useAuthState } from '../../firebase/FirebaseHistory'
-import { IUser } from '../../types/type'
+import Spinner from '../../components/Spinner/Spinner'
+import { useGetProductsQuery } from '../../redux/api'
+import type { IUser } from '../../types/type'
 import React, { useState } from 'react'
 import './HistoryPage.css'
 
@@ -11,7 +13,8 @@ interface HistoryItem {
 
 export default function HistoryPage() {
   const [history, setHistory] = useState<HistoryItem[]>([])
-  const [user, setUser] = useState<IUser | null>(null)
+  const [, setUser] = useState<IUser | null>(null)
+  const { isLoading } = useGetProductsQuery()
 
   useAuthState(setUser, setHistory)
   const handleDelURL = (id: string) => {
@@ -19,7 +22,9 @@ export default function HistoryPage() {
     setHistory((prev) => prev.filter((item) => item.id !== id))
   }
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : history.length >= 1 ? (
     <section className="history">
       <ul className="history__list">
         {history.map((item) => (
@@ -38,5 +43,9 @@ export default function HistoryPage() {
         ))}
       </ul>
     </section>
+  ) : (
+    <div className="not-found">
+      <h3 className="not-found__message">Nothing was found</h3>
+    </div>
   )
 }
