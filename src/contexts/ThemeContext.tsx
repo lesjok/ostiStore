@@ -1,4 +1,10 @@
-import React, { createContext, useContext, ReactNode, useState } from 'react'
+import React, {
+  createContext,
+  useContext,
+  ReactNode,
+  useState,
+  useMemo,
+} from 'react'
 
 interface contextProps {
   darkMode: boolean
@@ -18,10 +24,12 @@ export const ThemeProvider = ({ children }: providerProps) => {
     setDarkMode((prev) => !prev)
   }
 
-  const contextValue = {
-    darkMode,
-    toggleDarkMode,
-  }
+  const contextValue = useMemo(() => {
+    return {
+      darkMode,
+      toggleDarkMode,
+    }
+  }, [darkMode])
 
   return (
     <ThemeContext.Provider value={contextValue}>
