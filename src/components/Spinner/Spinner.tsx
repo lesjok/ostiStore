@@ -1,10 +1,14 @@
 import React from 'react'
 import './Spinner.css'
 
-export default function Spinner() {
+interface Props {
+  size?: 'small' | 'medium' | 'large'
+}
+
+export default function Spinner({ size = 'medium' }: Props) {
   return (
     <div className="spinner">
-      <div className="spinner_img"></div>
+      <div className={['spinner_img', `spinner_img--${size}`].join(' ')}></div>
     </div>
   )
 }

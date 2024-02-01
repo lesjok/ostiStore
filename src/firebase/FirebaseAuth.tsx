@@ -6,10 +6,10 @@ import {
 } from 'firebase/auth'
 import { useAppDispatch, useAppSelector } from '../redux/dispatch'
 import { doc, onSnapshot, setDoc } from 'firebase/firestore'
-import { logoutUser, setCurrentUser } from '../redux/slice'
 import type { IFormValues } from '../types/type'
 import { useNavigate } from 'react-router-dom'
 import { auth, db } from './firebase.config'
+import * as actions from '../redux/actions'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 
@@ -21,12 +21,12 @@ const useAuthentication = () => {
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
       if (!user) {
-        dispatch(setCurrentUser(null))
+        dispatch(actions.userLoggedOut())
         return
       }
       onSnapshot(doc(db, 'users', user.uid), () => {
         dispatch(
-          setCurrentUser({
+          actions.userLoggedIn({
             email: user.email,
             uid: user.uid,
           }),
@@ -37,7 +37,7 @@ const useAuthentication = () => {
 
   const logout = () => {
     signOut(auth)
-    dispatch(logoutUser())
+    dispatch(actions.userLoggedOut())
     navigate('/')
   }
   return { isLogin, auth, logout }

@@ -1,3 +1,4 @@
+import { FeatureFlagProvider } from './contexts/FeatureFlagContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { BrowserRouter } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals'
@@ -15,7 +16,9 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <ThemeProvider>
-          <App />
+          <FeatureFlagProvider>
+            <App />
+          </FeatureFlagProvider>
         </ThemeProvider>
       </Provider>
     </BrowserRouter>

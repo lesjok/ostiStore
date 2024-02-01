@@ -1,6 +1,7 @@
 import { useAuthentication } from '../../firebase/FirebaseAuth'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/images/grow.svg'
+import CustomLink from '../../ui/CustomLink'
 import Search from '../Search/Search'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -55,17 +56,13 @@ const Header = ({ toggleDarkMode }: Props) => {
           </label>
           <Search />
           {isLogin ? (
-            <Link to="/" className="nav__btn" onClick={handleLogout}>
+            <CustomLink to="/" onClick={handleLogout}>
               Log out
-            </Link>
+            </CustomLink>
           ) : (
             <>
-              <Link to="/login" className="nav__btn">
-                Login
-              </Link>
-              <Link to="/registration" className="nav__btn">
-                Register
-              </Link>
+              <CustomLink to="/login">Login</CustomLink>
+              <CustomLink to="/registration">Register</CustomLink>
             </>
           )}
         </div>
