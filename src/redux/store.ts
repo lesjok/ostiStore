@@ -1,19 +1,23 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { authMiddleware } from '../middlewares/authMiddleware'
+import { featureFlagApi } from '../shared/FeatureFlagApi'
 import { user } from './slice'
 import { api } from './api'
 
 export const rootReducer = combineReducers({
   auth: user,
   [api.reducerPath]: api.reducer,
+  [featureFlagApi.reducerPath]: featureFlagApi.reducer,
 })
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
+      .concat(authMiddleware.middleware)
       .concat(api.middleware)
-      .concat(authMiddleware.middleware),
+      .concat(featureFlagApi.middleware),
+
   devTools: true,
 })
 

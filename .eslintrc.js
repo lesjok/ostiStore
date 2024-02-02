@@ -7,6 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:storybook/recommended',
   ],
   overrides: [
     {
@@ -29,6 +30,8 @@ module.exports = {
   rules: {
     'no-console': 'warn',
     curly: ['error', 'all'],
+    'no-undef': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-no-useless-fragment': 'off',
     'no-unused-expressions': [

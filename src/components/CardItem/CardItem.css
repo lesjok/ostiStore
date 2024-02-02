@@ -44,3 +44,12 @@
   background-image: url('../../assets/images/heart-active.svg');
   background-repeat: no-repeat;
 }
+.card__share {
+  background-color: #848484;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  height: 25px;
+  font-size: 12px;
+}

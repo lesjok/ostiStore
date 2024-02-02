@@ -10,3 +10,13 @@
   background-image: url('../../assets/images/spinner.gif');
   background-size: 100px;
 }
+.spinner_img--large {
+  width: 120px;
+  height: 120px;
+  background-size: 120px;
+}
+.spinner_img--small {
+  width: 80px;
+  height: 80px;
+  background-size: 80px;
+}

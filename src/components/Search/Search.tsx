@@ -52,6 +52,7 @@ const Search = () => {
         onKeyDown={handleKeyPress}
         className="search__input"
         onBlur={handleBlur}
+        title="Search"
       />
       <a onClick={handleSearch} className="nav__btn">
         Search
