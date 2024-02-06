@@ -1,3 +1,4 @@
+import { consoleListenerMiddleware } from '../middlewares/consoleMiddleware'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { authMiddleware } from '../middlewares/authMiddleware'
 import { featureFlagApi } from '../shared/FeatureFlagApi'
@@ -14,6 +15,7 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
+      .prepend(consoleListenerMiddleware.middleware)
       .concat(authMiddleware.middleware)
       .concat(api.middleware)
       .concat(featureFlagApi.middleware),
