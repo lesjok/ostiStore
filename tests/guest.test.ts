@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 test('guest test', async ({ page }) => {
-  await page.goto('http://localhost:3000')
+  await page.goto(process.env.REACT_APP_CORS_URL || '')
   await page.getByTitle('Search').click()
   await page.getByTitle('Search').fill('mens')
   await page.getByTitle('Search').press('Enter')

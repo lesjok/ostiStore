@@ -1,11 +1,6 @@
 .history {
   padding: 20px;
 }
-.history__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 .history__item {
   background-color: #fff;
   padding: 10px;

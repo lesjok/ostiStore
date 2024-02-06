@@ -11,7 +11,10 @@ import {
 import MyErrorBoundary from './components/MyErrorBoundary/MyErrorBoundary'
 import { ProtectedRoute } from './router/ProtectedRoute'
 import Spinner from './components/Spinner/Spinner'
+import { commands } from './console API/commands'
 import { Route, Routes } from 'react-router-dom'
+import { show } from './console API/console'
+import { store } from './redux/store'
 import { Suspense } from 'react'
 import React from 'react'
 import './App.css'
@@ -49,3 +52,12 @@ export function App() {
     </MyErrorBoundary>
   )
 }
+
+declare global {
+  interface Window {
+    show: (commandString: string) => void
+  }
+}
+
+window.show = show(store.dispatch)
+window.show(commands.init)

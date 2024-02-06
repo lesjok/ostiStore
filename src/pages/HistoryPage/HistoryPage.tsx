@@ -1,6 +1,7 @@
 import { deleteHistory, useAuthState } from '../../firebase/FirebaseHistory'
 import Spinner from '../../components/Spinner/Spinner'
 import { useGetProductsQuery } from '../../redux/api'
+import { FixedSizeList as List } from 'react-window'
 import type { IUser } from '../../types/type'
 import React, { useState } from 'react'
 import './HistoryPage.css'
@@ -26,22 +27,36 @@ export default function HistoryPage() {
     <Spinner />
   ) : history.length >= 1 ? (
     <section className="history">
-      <ul className="history__list">
-        {history.map((item) => (
-          <li key={item.id} className="history__item">
-            <a className="history__link" href={`/search?query=${item.query}`}>
-              {item.query}
+      <List
+        width={1400}
+        height={550}
+        itemCount={history.length}
+        itemSize={45}
+        style={{
+          position: 'initial',
+          width: '100%',
+          height: '100%',
+          willChange: 'initial',
+        }}
+      >
+        {({ index }) => (
+          <li key={history[index].id} className="history__item">
+            <a
+              className="history__link"
+              href={`/search?query=${history[index].query}`}
+            >
+              {history[index].query}
             </a>
             <button
               className="history__del"
               type="button"
-              onClick={() => handleDelURL(item.id)}
+              onClick={() => handleDelURL(history[index].id)}
             >
               Delete
             </button>
           </li>
-        ))}
-      </ul>
+        )}
+      </List>
     </section>
   ) : (
     <div className="not-found">
