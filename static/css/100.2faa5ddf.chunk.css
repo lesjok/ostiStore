@@ -1,0 +1,2 @@
+.history{padding:20px}.history__item{background-color:#fff;border-radius:10px;display:flex;justify-content:space-between;margin-bottom:10px;padding:10px;transition:opacity .5s ease,transform .5s ease}.history__item.exiting{opacity:0;transform:translateY(-50px)}.history__link{color:#000;font-weight:700;text-decoration:none}.history__del{background-color:initial;border:none;cursor:pointer}.not-found{display:flex;justify-content:center}.not-found__message{font-size:18px;margin-top:20px}
+/*# sourceMappingURL=100.2faa5ddf.chunk.css.map*/
