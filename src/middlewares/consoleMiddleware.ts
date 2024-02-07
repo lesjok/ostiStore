@@ -4,10 +4,10 @@ import {
   showHelp,
   showStart,
   showNotFound,
-} from '../console API/consoleFunctions'
-import { consoleParamsSet } from '../console API/consoleAction'
+} from '../consoleAPI/consoleFunctions'
+import { consoleParamsSet } from '../consoleAPI/consoleAction'
 import { createListenerMiddleware } from '@reduxjs/toolkit'
-import { commands } from '../console API/commands'
+import { commands } from '../consoleAPI/commands'
 import { AppDispatch } from '../redux/store'
 
 export const consoleListenerMiddleware = createListenerMiddleware()
@@ -17,7 +17,7 @@ startAppListening({
   actionCreator: consoleParamsSet,
   effect: async (action, listenerApi) => {
     const { command, params } = action.payload
-    const { dispatch } = listenerApi as { dispatch: AppDispatch }
+    const { dispatch } = listenerApi as { dispatch: AppDispatch } //к сожалению не знаю как тут обойтись без as
     switch (command) {
       case commands.init:
         showStart()

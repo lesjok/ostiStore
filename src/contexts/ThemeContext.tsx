@@ -24,18 +24,14 @@ export const ThemeProvider = ({ children }: providerProps) => {
     setDarkMode((prev) => !prev)
   }
 
-  const contextValue = useMemo(() => {
+  const value = useMemo(() => {
     return {
       darkMode,
       toggleDarkMode,
     }
   }, [darkMode])
 
-  return (
-    <ThemeContext.Provider value={contextValue}>
-      {children}
-    </ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
 export const useTheme = () => {

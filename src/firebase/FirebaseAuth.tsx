@@ -5,11 +5,11 @@ import {
   signOut,
 } from 'firebase/auth'
 import { useAppDispatch, useAppSelector } from '../redux/dispatch'
+import { userLoggedIn, userLoggedOut } from '../redux/actions'
 import { doc, onSnapshot, setDoc } from 'firebase/firestore'
 import type { IFormValues } from '../types/type'
 import { useNavigate } from 'react-router-dom'
 import { auth, db } from './firebase.config'
-import * as actions from '../redux/actions'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 
@@ -21,12 +21,12 @@ const useAuthentication = () => {
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
       if (!user) {
-        dispatch(actions.userLoggedOut())
+        dispatch(userLoggedOut())
         return
       }
       onSnapshot(doc(db, 'users', user.uid), () => {
         dispatch(
-          actions.userLoggedIn({
+          userLoggedIn({
             email: user.email,
             uid: user.uid,
           }),
@@ -37,7 +37,7 @@ const useAuthentication = () => {
 
   const logout = () => {
     signOut(auth)
-    dispatch(actions.userLoggedOut())
+    dispatch(userLoggedOut())
     navigate('/')
   }
   return { isLogin, auth, logout }
@@ -60,8 +60,8 @@ const useRegister = () => {
         history: [],
       })
       navigate('/')
-    } catch (e) {
-      alert((e as Error).message)
+    } catch (error) {
+      alert(error)
     }
   }
 
@@ -79,8 +79,7 @@ const useLogin = () => {
       await signInWithEmailAndPassword(auth, data.email, data.password)
       navigate('/')
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Login error in Firebase:', error)
+      alert(error)
     }
   }
   return {

@@ -5,43 +5,19 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
+    environment: github-pages
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        run: |
-          git config --local user.email "lesjok@inbox.ru"
-          git config --local user.name "Olesya Dorofeeva"
-
-          git checkout -b gh-pages-temp
-
-          cp -r build/* .
-
-          git add --all
-
-          git commit -m "GitHub Pages Deployment"
-
-          git push --set-upstream origin gh-pages-temp -o "oauth2=${{ secrets.GITHUB_TOKEN }}" --force
-
-          git fetch origin
-          git checkout gh-pages
-          git reset --hard origin/gh-pages-temp
-          git clean -df
-
-          git push origin gh-pages --force
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: build

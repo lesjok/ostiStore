@@ -1,7 +1,7 @@
-import React, { useState, KeyboardEvent, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { saveHistory } from '../../firebase/FirebaseHistory'
 import { useSearchProductsQuery } from '../../redux/api'
+import React, { useState, KeyboardEvent } from 'react'
 import type { IProduct } from '../../types/type'
 import debounce from '../../hooks/debounce'
 import { Link } from 'react-router-dom'
@@ -11,9 +11,9 @@ const Search = () => {
   const [products, setProducts] = useState<IProduct[]>([])
   const [searchParams] = useSearchParams()
   const query = searchParams.get('query')
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState(query || '')
   const debouncedValue = debounce<string>(searchTerm, 700)
-  const [showSuggestions, setShowSuggestions] = useState(true)
+  const [showSuggestions, setShowSuggestions] = useState(false)
   const { data: productsFromQuery = [] } =
     useSearchProductsQuery(debouncedValue)
   const navigate = useNavigate()
@@ -31,11 +31,6 @@ const Search = () => {
     navigate(searchUrl)
     saveHistory(searchTerm)
   }
-
-  useEffect(() => {
-    setSearchTerm(query || '')
-    setShowSuggestions(false)
-  }, [query])
 
   const handleBlur = () => {
     setTimeout(() => {

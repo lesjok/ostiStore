@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { userLoggedIn, userLoggedOut } from './actions'
 import { auth } from '../firebase/firebase.config'
 import type { IUser } from '../types/type'
-import * as actions from './actions'
 
 type InitialState = {
   authorize: boolean
@@ -19,10 +19,10 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(actions.userLoggedIn, (state, action: PayloadAction<IUser>) => {
+      .addCase(userLoggedIn, (state, action: PayloadAction<IUser>) => {
         state.user = action.payload
       })
-      .addCase(actions.userLoggedOut, (state) => {
+      .addCase(userLoggedOut, (state) => {
         state.user = null
       })
   },

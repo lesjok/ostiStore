@@ -1,14 +1,21 @@
-import { useGetFeatureFlagQuery } from '../shared/FeatureFlagApi'
-import { createContext } from 'react'
-import PropTypes from 'prop-types'
+import { useGetFeatureFlagQuery } from '../features/FeatureFlagApi'
+import { createContext, ReactNode } from 'react'
 import { useMemo } from 'react'
 import React from 'react'
 
-export const FeatureFlagContext = createContext({
+interface ContextProps {
+  isTelegramShareEnabled: boolean
+}
+
+interface ProviderProps {
+  children: ReactNode
+}
+
+export const FeatureFlagContext = createContext<ContextProps>({
   isTelegramShareEnabled: false,
 })
 
-export const FeatureFlagProvider = ({ children }) => {
+export const FeatureFlagProvider: React.FC<ProviderProps> = ({ children }) => {
   const { data } = useGetFeatureFlagQuery()
 
   const value = useMemo(() => {
@@ -23,8 +30,4 @@ export const FeatureFlagProvider = ({ children }) => {
       {children}
     </FeatureFlagContext.Provider>
   )
-}
-
-FeatureFlagProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 }

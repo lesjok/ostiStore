@@ -1,7 +1,7 @@
 import { consoleListenerMiddleware } from '../middlewares/consoleMiddleware'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { authMiddleware } from '../middlewares/authMiddleware'
-import { featureFlagApi } from '../shared/FeatureFlagApi'
+import { featureFlagApi } from '../features/FeatureFlagApi'
 import { user } from './slice'
 import { api } from './api'
 
