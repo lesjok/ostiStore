@@ -1,7 +1,7 @@
 import { deleteHistory, useAuthState } from '../../firebase/FirebaseHistory'
 import Spinner from '../../components/Spinner/Spinner'
 import { useGetProductsQuery } from '../../redux/api'
-import { FixedSizeList as List } from 'react-window'
+import { FixedSizeList as List } from 'react-window' //as используется для удобства использования переменной в разметке
 import type { IUser } from '../../types/type'
 import React, { useState } from 'react'
 import './HistoryPage.css'

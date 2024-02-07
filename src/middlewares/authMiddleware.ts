@@ -1,5 +1,5 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
-import * as actions from '../redux/actions'
+import { userLoggedIn } from '../redux/actions'
 
 interface IAction {
   payload?: {
@@ -11,7 +11,7 @@ interface IAction {
 export const authMiddleware = createListenerMiddleware()
 
 authMiddleware.startListening({
-  actionCreator: actions.userLoggedIn,
+  actionCreator: userLoggedIn,
   effect: async (action: IAction) => {
     /* eslint-disable no-console*/
     console.log('Пользователь: ' + action.payload?.email + ' вошёл в аккаунт')
