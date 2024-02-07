@@ -1,7 +1,7 @@
 # ostiStore
+[![Netlify Status](https://api.netlify.com/api/v1/badges/45b07e86-afd6-4eb8-9226-105c751be5e2/deploy-status)](https://app.netlify.com/sites/ostistore/deploys)
 
-[![CI](https://github.com/lesjok/ostiStore/actions/workflows/main.yml/badge.svg)](https://github.com/lesjok/ostiStore/actions/workflows/main.yml)
-[![Deploy to GitHub Pages](https://github.com/lesjok/ostiStore/actions/workflows/cd.yml/badge.svg)](https://github.com/lesjok/ostiStore/actions/workflows/cd.yml)
+[![CI](https://github.com/lesjok/ostiStore/actions/workflows/main.yml/badge.svg)](https://github.com/lesjok/ostiStore/actions/workflows/ci.yml)
 
 Проект представляет собой каталог товаров одежды
 
