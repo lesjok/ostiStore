@@ -41,7 +41,7 @@ API: https://fakestoreapi.com/
 - [x] Используeтся TypeScript [types](https://github.com/lesjok/ostiStore/blob/main/src/types/type.ts)
 - [x] Подключен storybook и созданы два, три сториса с knobs, которые показывают разные состояния компонента [Spinner](https://github.com/lesjok/ostiStore/blob/main/src/components/Spinner/Spinner.stories.tsx), [CustomLink](https://github.com/lesjok/ostiStore/blob/main/src/ui/CustomLink.stories.tsx)
 - [x] Используется Firebase для учетных записей пользователей и их Избранного и Истории поиска [firebase.config](https://github.com/lesjok/ostiStore/blob/main/src/firebase/firebase.config.ts)
-- [x] Настроен [CI](https://github.com/lesjok/ostiStore/blob/.github/workflows/ci.yml) / [CD](https://github.com/lesjok/ostiStore/blob/main/.github/workflows/cd.yml)
+- [x] Настроен [CI](https://github.com/lesjok/ostiStore/blob/main/.github/workflows/ci.yml) / [CD](https://github.com/lesjok/ostiStore/blob/main/.github/workflows/cd.yml)
 - [x] Реализована виртуализация списков [HistoryPage](https://github.com/lesjok/ostiStore/blob/main/src/pages/HistoryPage/HistoryPage.tsx)
 - [x] Проведена оптимизация приложения [ThemeContext](https://github.com/lesjok/ostiStore/blob/main/src/contexts/ThemeContext.tsx), [FeatureFlagContext](https://github.com/lesjok/ostiStore/blob/main/src/contexts/FeatureFlagContext.tsx). Обернула value в useMemo. До этого value создавался заново при каждом рендере компонента, теперь значение value будет пересчитано только при изменении зависимостей.
 - [x] Реализована фича “Поделиться в телеграм”, закрытую под фича флагом [FeatureFlagApi](https://github.com/lesjok/ostiStore/blob/main/src/features/FeatureFlagApi.ts)
