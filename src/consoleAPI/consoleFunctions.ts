@@ -16,8 +16,9 @@ export const parseCommand = (commandSting: string): ParsedCommand => {
 
 /* eslint-disable no-console */
 export const searchProducts = (params: string, dispatch: AppDispatch): void => {
+  const query = params[0]
   if (params) {
-    dispatch(api.endpoints.searchProducts.initiate(params))
+    dispatch(api.endpoints.searchProducts.initiate(query))
       .unwrap()
       .then((res) => console.table(res))
       .catch((e) => console.warn(e))
