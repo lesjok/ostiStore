@@ -3,6 +3,7 @@ import CardItem from '../../components/CardItem/CardItem'
 import Spinner from '../../components/Spinner/Spinner'
 import { useGetProductsQuery } from '../../redux/api'
 import '../SearchPage/SearchPage.css'
+import './FavouritePage.css'
 import React from 'react'
 
 const FavouritePage = () => {

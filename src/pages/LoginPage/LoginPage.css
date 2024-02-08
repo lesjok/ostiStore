@@ -48,3 +48,13 @@
   display: flex;
   justify-content: center;
 }
+@media screen and (max-width: 760px) {
+  .form {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 350px) {
+  .form {
+    width: 90%;
+  }
+}

@@ -2,6 +2,7 @@ import { useGetProductsQuery, useSearchProductsQuery } from '../../redux/api'
 import CardItem from '../../components/CardItem/CardItem'
 import Spinner from '../../components/Spinner/Spinner'
 import { useLocation } from 'react-router-dom'
+import '../MainPage/MainPage.css'
 import './SearchPage.css'
 import React from 'react'
 

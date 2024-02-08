@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
+  justify-content: center;
 }
 .cards__item {
   height: 325px;
@@ -13,4 +14,29 @@
   border-radius: 10px;
   background-color: white;
   padding: 10px;
+}
+@media screen and (max-width: 1420px) {
+  .cards__item {
+    flex: 0 1 22%;
+  }
+}
+@media screen and (max-width: 940px) {
+  .cards__item {
+    flex: 0 1 29%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .cards__item {
+    flex: 0 1 45%;
+  }
+}
+@media screen and (max-width: 570px) {
+  .cards__item {
+    flex: 0 1 35%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .cards {
+    flex-direction: column;
+  }
 }

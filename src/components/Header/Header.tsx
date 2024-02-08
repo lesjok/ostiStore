@@ -1,7 +1,8 @@
 import { useAuthentication } from '../../firebase/FirebaseAuth'
+import CustomLink from '../../ui/CustonLink/CustomLink'
+import BurgerMenu from '../../ui/BurgerMenu/BurgerMenu'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/images/grow.svg'
-import CustomLink from '../../ui/CustomLink'
 import Search from '../Search/Search'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -13,6 +14,7 @@ interface Props {
 
 const Header = ({ toggleDarkMode }: Props) => {
   const { isLogin, logout } = useAuthentication()
+  const navClassName = isLogin ? '' : 'center'
 
   const handleLogout = () => {
     logout()
@@ -21,10 +23,18 @@ const Header = ({ toggleDarkMode }: Props) => {
   return (
     <header className="header">
       <nav className="header__nav">
-        <Link to="/" className="header__link">
-          <img src={logo} alt="logo" title="Fake Shop" className="nav__logo" />
-          <h2 className="nav__head">Osti Shop</h2>
-        </Link>
+        <div className={`nav__left ${navClassName}`}>
+          <Link to="/" className="header__link">
+            <img
+              src={logo}
+              alt="logo"
+              title="Fake Shop"
+              className="nav__logo"
+            />
+            <h2 className="nav__head">Osti Shop</h2>
+          </Link>
+          {isLogin && <BurgerMenu />}
+        </div>
         <div className="nav__right">
           {isLogin && (
             <>
@@ -57,7 +67,7 @@ const Header = ({ toggleDarkMode }: Props) => {
           <Search />
           {isLogin ? (
             <CustomLink to="/" onClick={handleLogout}>
-              Log out
+              Logout
             </CustomLink>
           ) : (
             <>

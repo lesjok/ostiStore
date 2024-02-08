@@ -23,6 +23,7 @@ const RegistrationPage = () => {
       setPasswordError('')
     }
   }
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="form">

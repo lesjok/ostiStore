@@ -20,30 +20,13 @@
   display: flex;
   text-decoration: none;
   color: #000;
+  align-items: center;
 }
 .nav__right {
   margin-left: auto;
   display: flex;
   align-items: center;
 }
-/*.nav__btn {*/
-/*  border-radius: 10px;*/
-/*  padding: 0 10px;*/
-/*  height: 30px;*/
-/*  border: 2px solid #000;*/
-/*  background-color: #dfa4ff;*/
-/*  text-decoration: none;*/
-/*  margin-left: 10px;*/
-/*  cursor: pointer;*/
-/*  color: #000;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  transition: 0.2s;*/
-/*}*/
-/*.nav__btn:hover {*/
-/*  background-color: #e5b6ff;*/
-/*}*/
 .nav__link {
   text-decoration: none;
   color: #000;
@@ -128,8 +111,69 @@
 .nav__checkbox input[type='checkbox']:checked + .checkbox__switch:after {
   content: attr(data-label-on);
   color: #dfa4ff;
-  transform: translate3d(44px, 0, 0);
+  transform: translate3d(24px, 0, 0);
 }
 .header_theme_dark {
   background-color: #000;
+}
+@media screen and (max-width: 830px) {
+  .header {
+    padding: 5px;
+    font-size: 10px;
+  }
+  .nav__head {
+    margin: 0;
+    font-size: 16px;
+  }
+  .nav__logo {
+    height: 45px;
+  }
+  .nav__link {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  .nav__btn {
+    padding: 4px;
+  }
+  .nav__checkbox {
+    height: 22px;
+  }
+  .nav__checkbox .checkbox__switch {
+    width: 57px;
+    height: 22px;
+  }
+  .nav__checkbox .checkbox__switch:after {
+    width: 30px;
+    line-height: 20px;
+    font-size: 9px;
+  }
+  .nav__checkbox .checkbox__switch:before {
+    line-height: 23px;
+    left: 18px;
+    font-size: 9px;
+  }
+  .nav__checkbox input[type='checkbox']:checked + .checkbox__switch:before {
+    left: -8px;
+  }
+}
+@media screen and (max-width: 570px) {
+  .header__nav {
+    flex-direction: column;
+  }
+  .nav__link {
+    display: none;
+  }
+  .nav__left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .nav__left.center {
+    justify-content: center;
+  }
+  .nav__right {
+    margin: 0;
+  }
 }

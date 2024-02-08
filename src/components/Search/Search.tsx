@@ -48,6 +48,7 @@ const Search = () => {
         className="search__input"
         onBlur={handleBlur}
         title="Search"
+        placeholder="Search"
       />
       <a onClick={handleSearch} className="nav__btn">
         Search

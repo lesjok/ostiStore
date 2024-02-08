@@ -32,9 +32,22 @@
   border: 2px solid #000;
   padding: 10px;
 }
+.search__input::placeholder {
+  color: #c9c9c9;
+}
 ::-webkit-scrollbar {
   display: none;
 }
 .search__nothing {
   padding: 10px;
+}
+@media screen and (max-width: 830px) {
+  .search__input {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 570px) {
+  .search__input {
+    width: 100%;
+  }
 }
