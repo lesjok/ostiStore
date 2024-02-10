@@ -1,23 +1,17 @@
 import { useAuthentication } from '../firebase/FirebaseAuth'
-import { useNavigate } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
+import React from 'react'
 
 interface Props {
   children: React.ReactNode
 }
+
 const ProtectedRoute = ({ children }: Props) => {
-  const { isLogin } = useAuthentication()
-  const navigate = useNavigate()
+  const { isLogin, isLoading } = useAuthentication()
 
-  useEffect(() => {
-    if (!isLogin) {
-      const timeoutId = setTimeout(() => {
-        navigate('/login')
-      }, 2000)
-
-      return () => clearTimeout(timeoutId)
-    }
-  }, [isLogin, navigate])
+  if (!isLogin && isLoading) {
+    return <Navigate to="/login" replace />
+  }
 
   return <>{children}</>
 }

@@ -1,4 +1,4 @@
-import { AppDispatch } from '../redux/store'
+import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import { messages } from './messages'
 import { api } from '../redux/api'
 
@@ -15,7 +15,10 @@ export const parseCommand = (commandSting: string): ParsedCommand => {
 }
 
 /* eslint-disable no-console */
-export const searchProducts = (params: string, dispatch: AppDispatch): void => {
+export const searchProducts = (
+  params: string,
+  dispatch: ThunkDispatch<unknown, unknown, UnknownAction>,
+): void => {
   const query = params[0]
   if (params) {
     dispatch(api.endpoints.searchProducts.initiate(query))
@@ -27,7 +30,10 @@ export const searchProducts = (params: string, dispatch: AppDispatch): void => {
   }
 }
 
-export const getProduct = (params: string[], dispatch: AppDispatch) => {
+export const getProduct = (
+  params: string[],
+  dispatch: ThunkDispatch<unknown, unknown, UnknownAction>,
+) => {
   const id = Number(params[0])
   dispatch(api.endpoints.getDetailProduct.initiate(id))
     .unwrap()

@@ -57,7 +57,7 @@ const getHistory = (setHistory: Dispatch<SetStateAction<IHistory[]>>) => {
   })
 }
 
-export const saveHistory = async (query: string) => {
+export const savedHistory = async (query: string) => {
   const user = auth.currentUser
 
   if (!user) {
@@ -80,7 +80,7 @@ export const saveHistory = async (query: string) => {
   }
 }
 
-export const deleteHistory = async (queryId: string) => {
+export const deletedHistory = async (queryId: string) => {
   const user = auth.currentUser
 
   if (!user) {

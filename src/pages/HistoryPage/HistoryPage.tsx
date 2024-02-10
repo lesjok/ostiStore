@@ -1,8 +1,9 @@
-import { deleteHistory, useAuthState } from '../../firebase/FirebaseHistory'
+import { deletedHistory, useAuthState } from '../../firebase/FirebaseHistory'
 import Spinner from '../../components/Spinner/Spinner'
 import { useGetProductsQuery } from '../../redux/api'
 import { FixedSizeList as List } from 'react-window' //as используется для удобства использования переменной в разметке
 import type { IUser } from '../../types/type'
+import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import './HistoryPage.css'
 
@@ -19,7 +20,7 @@ export default function HistoryPage() {
 
   useAuthState(setUser, setHistory)
   const handleDelURL = (id: string) => {
-    deleteHistory(id)
+    deletedHistory(id)
     setHistory((prev) => prev.filter((item) => item.id !== id))
   }
 
@@ -41,12 +42,12 @@ export default function HistoryPage() {
       >
         {({ index }) => (
           <li key={history[index].id} className="history__item">
-            <a
+            <Link
               className="history__link"
-              href={`/search?query=${history[index].query}`}
+              to={`/search?query=${history[index].query}`}
             >
               {history[index].query}
-            </a>
+            </Link>
             <button
               className="history__del"
               type="button"

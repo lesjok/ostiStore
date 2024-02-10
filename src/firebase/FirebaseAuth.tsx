@@ -10,16 +10,20 @@ import { doc, onSnapshot, setDoc } from 'firebase/firestore'
 import type { IFormValues } from '../types/type'
 import { useNavigate } from 'react-router-dom'
 import { auth, db } from './firebase.config'
+import { useEffect, useState } from 'react'
+import { RootState } from '../redux/store'
 import { useForm } from 'react-hook-form'
-import { useEffect } from 'react'
 
 const useAuthentication = () => {
   const dispatch = useAppDispatch()
-  const isLogin = useAppSelector((state) => state.auth.user)
+  const [isLoading, setIsLoading] = useState(false)
+  const getUser = (state: RootState) => state.auth.user
+  const isLogin = useAppSelector(getUser)
   const navigate = useNavigate()
 
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
+      setIsLoading(true)
       if (!user) {
         dispatch(userLoggedOut())
         return
@@ -32,6 +36,7 @@ const useAuthentication = () => {
           }),
         )
       })
+      setIsLoading(false)
     })
   }, [dispatch])
 
@@ -40,7 +45,7 @@ const useAuthentication = () => {
     dispatch(userLoggedOut())
     navigate('/')
   }
-  return { isLogin, auth, logout }
+  return { isLogin, auth, logout, isLoading }
 }
 
 const useRegister = () => {

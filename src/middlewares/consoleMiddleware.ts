@@ -5,19 +5,22 @@ import {
   showStart,
   showNotFound,
 } from '../consoleAPI/consoleFunctions'
+import {
+  createListenerMiddleware,
+  ThunkDispatch,
+  UnknownAction,
+} from '@reduxjs/toolkit'
 import { consoleParamsSet } from '../consoleAPI/consoleAction'
-import { createListenerMiddleware } from '@reduxjs/toolkit'
 import { commands } from '../consoleAPI/commands'
-import { AppDispatch } from '../redux/store'
 
 export const consoleListenerMiddleware = createListenerMiddleware()
-const startAppListening = consoleListenerMiddleware.startListening
 
-startAppListening({
+consoleListenerMiddleware.startListening({
   actionCreator: consoleParamsSet,
   effect: async (action, listenerApi) => {
     const { command, params } = action.payload
-    const { dispatch } = listenerApi as { dispatch: AppDispatch } //к сожалению не знаю как тут обойтись без as
+    const dispatch: ThunkDispatch<unknown, unknown, UnknownAction> =
+      listenerApi.dispatch
     switch (command) {
       case commands.init:
         showStart()

@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Header = ({ toggleDarkMode }: Props) => {
-  const { isLogin, logout } = useAuthentication()
+  const { isLogin, logout, isLoading } = useAuthentication()
   const navClassName = isLogin ? '' : 'center'
 
   const handleLogout = () => {
@@ -65,15 +65,15 @@ const Header = ({ toggleDarkMode }: Props) => {
             ></span>
           </label>
           <Search />
-          {isLogin ? (
-            <CustomLink to="/" onClick={handleLogout}>
-              Logout
-            </CustomLink>
-          ) : (
+          {isLoading && isLogin === null ? (
             <>
               <CustomLink to="/login">Login</CustomLink>
               <CustomLink to="/registration">Register</CustomLink>
             </>
+          ) : (
+            <CustomLink to="/" onClick={handleLogout}>
+              Logout
+            </CustomLink>
           )}
         </div>
       </nav>

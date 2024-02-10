@@ -7,14 +7,15 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { useAppSelector } from '../redux/dispatch'
-
 import { useNavigate } from 'react-router-dom'
 import type { IProduct } from '../types/type'
 import { useEffect, useState } from 'react'
+import { RootState } from '../redux/store'
 import { db } from './firebase.config'
 
 const useLiked = (productId: number | null) => {
-  const currentUser = useAppSelector((state) => state.auth.user)
+  const getUser = (state: RootState) => state.auth.user
+  const currentUser = useAppSelector(getUser)
   const navigate = useNavigate()
   const [isLiked, setIsLiked] = useState(false)
 
@@ -22,21 +23,14 @@ const useLiked = (productId: number | null) => {
     if (!currentUser || !productId) {
       return
     }
-
-    const unsubscribe = onSnapshot(
-      doc(db, 'users', currentUser.uid),
-      (snapshot) => {
-        const data = snapshot.data()
-        if (data && data.bookmarks) {
-          setIsLiked(
-            data.bookmarks.some((item: IProduct) => item.id === productId),
-          )
-        }
-      },
-    )
-    return () => {
-      unsubscribe()
-    }
+    return onSnapshot(doc(db, 'users', currentUser.uid), (snapshot) => {
+      const data = snapshot.data()
+      if (data && data.bookmarks) {
+        setIsLiked(
+          data.bookmarks.some((item: IProduct) => item.id === productId),
+        )
+      }
+    })
   }, [currentUser, productId])
 
   const toggleIsLiked = async (product: IProduct | undefined) => {
@@ -74,7 +68,8 @@ const useLiked = (productId: number | null) => {
 }
 
 const useLikedProducts = () => {
-  const currentUser = useAppSelector((state) => state.auth.user)
+  const getUser = (state: RootState) => state.auth.user
+  const currentUser = useAppSelector(getUser)
   const [likedProducts, setLikedProducts] = useState<IProduct[]>([])
 
   useEffect(() => {
